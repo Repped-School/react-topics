@@ -1,14 +1,16 @@
-import { Inter } from 'next/font/google';
 import PropTypes from 'prop-types';
+import NavBar from '../components/NavBar';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@/styles/globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>
+        <NavBar />
+        <div className="container">{children}</div>
+      </body>
     </html>
   );
 }
@@ -17,7 +19,7 @@ RootLayout.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-// You can manage the metadata, tab content and info about your app dynamically using this. It will work on every page in your app:
+// You can manage the metadata, tab content, and info about your app dynamically using this. It will work on every page in your app:
 export const generateMetadata = async ({ params }) => {
   // Destructure parameters or fetch necessary data here
   const { slug } = params; // Example of accessing dynamic route params
